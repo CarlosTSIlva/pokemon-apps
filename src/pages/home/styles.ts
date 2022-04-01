@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
+export const ContainerHome = styled.div`
+  background-color: #2a75bb;
+  height: 100%;
+  text-align: center;
+`;
+
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   align-items: center;
 
   justify-items: center;
-  background-color: #2a75bb;
 `;
 
 export const CardPokemon = styled.div`
@@ -37,46 +42,25 @@ export const NavigationButton = styled.div`
   padding-bottom: 2%;
 `;
 
-export const Header = styled.header`
-  display: flex;
-  background-color: #2a75bb;
-  text-align: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
-  align-items: center;
-  max-height: 400px;
-
-  border: 18px red solid;
-  nav {
-    font-weight: bold;
-    font-size: 3vw;
-  }
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-`;
-
 export const Modal = styled.div`
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
   > div {
+    text-align: center;
     background-color: #fefefe;
     border-radius: 15px;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
   }
 `;
 

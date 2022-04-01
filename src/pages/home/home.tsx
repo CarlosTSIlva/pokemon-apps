@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import LogoPng from '../../assets/pokedex_logo.png';
-
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   EffectPokemon,
@@ -17,18 +15,17 @@ import {
   CardPokemon,
   ButtonPokemon,
   NavigationButton,
-  Header,
   Modal,
   CloseModal,
+  ContainerHome,
 } from './styles';
 
-import { addPokedex, pokedex } from '../../global/redux';
+import { addPokedex } from '../../global/redux';
 
 import { getPokemons } from '../../service/pokemons/getPokemons';
 
-import { useNavigate } from 'react-router-dom';
-
 import Button from '../../components/Button';
+import { Header } from '../../components/Header';
 
 function Home() {
   const [pokemon, setPokemon] = useState<ResponseGetPokemon>();
@@ -37,8 +34,6 @@ function Home() {
   const [effect, setEffect] = useState<EffectPokemon[]>([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const pokedexSelect = useSelector(pokedex);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const getImage = useCallback(async (url: string) => {
     let response = '';
@@ -95,7 +90,7 @@ function Home() {
   }
 
   return (
-    <div className='App'>
+    <ContainerHome>
       <Modal style={{ display: !openModal ? '' : 'block' }}>
         <div>
           <CloseModal
@@ -118,25 +113,7 @@ function Home() {
           })}
         </div>
       </Modal>
-
-      <Header>
-        <img src={LogoPng} alt='logo' height={'170vh'} />
-        <nav>
-          <h1>
-            Pokemons <br /> capturados
-          </h1>
-          <h1> {pokedexSelect.length}</h1>
-          <Button
-            onClick={() => {
-              navigate('/pokedex');
-            }}
-            style={{ width: '100%' }}
-          >
-            Ver pokemons
-          </Button>
-        </nav>
-      </Header>
-
+      <Header />
       {loading ? (
         <div>
           <h1>Loading....</h1>
@@ -171,30 +148,31 @@ function Home() {
         </Container>
       )}
 
-      <NavigationButton>
-        <Button
-          isDisabled={pokemon?.previous == null}
-          onClick={() => {
-            if (page != 0) {
-              setPage(page - 1);
+      {loading ?? (
+        <NavigationButton>
+          <Button
+            isDisabled={pokemon?.previous == null}
+            onClick={() => {
+              if (page !== 0) {
+                setPage(page - 1);
+                topFunction();
+              }
+            }}
+          >
+            Anterior
+          </Button>
+          <Button
+            isDisabled={pokemon?.next == null}
+            onClick={() => {
+              setPage(page + 1);
               topFunction();
-            }
-          }}
-        >
-          Anterior
-        </Button>
-        <Button
-          isDisabled={pokemon?.next == null}
-          onClick={() => {
-            setPage(page + 1);
-
-            topFunction();
-          }}
-        >
-          Proximo
-        </Button>
-      </NavigationButton>
-    </div>
+            }}
+          >
+            Proximo
+          </Button>
+        </NavigationButton>
+      )}
+    </ContainerHome>
   );
 }
 
