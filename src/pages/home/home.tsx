@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import './App.css';
 
 import LogoPng from '../../assets/pokedex_logo.png';
 
@@ -19,6 +18,8 @@ import {
   ButtonPokemon,
   NavigationButton,
   Header,
+  Modal,
+  CloseModal,
 } from './styles';
 
 import { addPokedex, pokedex } from '../../global/redux';
@@ -95,15 +96,14 @@ function Home() {
 
   return (
     <div className='App'>
-      <div
-        id='myModal'
-        className='modal'
-        style={{ display: !openModal ? '' : 'block' }}
-      >
-        <div className='modal-content'>
-          <span onClick={() => setOpenModal(!openModal)} className='close'>
+      <Modal style={{ display: !openModal ? '' : 'block' }}>
+        <div>
+          <CloseModal
+            onClick={() => setOpenModal(!openModal)}
+            className='close'
+          >
             &times;
-          </span>
+          </CloseModal>
           {effect.map((e) => {
             return (
               <div key={e.effect}>
@@ -117,7 +117,7 @@ function Home() {
             );
           })}
         </div>
-      </div>
+      </Modal>
 
       <Header>
         <img src={LogoPng} alt='logo' height={'170vh'} />
