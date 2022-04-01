@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const Container = styled.button`
-  background: #ff9000;
+interface ButtonProps {
+  isDisabled?: boolean;
+}
+
+export const Container = styled.button<ButtonProps>`
+  background: ${(props) => {
+    return props.isDisabled ? '#d3d3d3' : '#ff9000';
+  }};
   color: #312e38;
   border: 0;
   border-radius: 10px;
@@ -13,6 +19,8 @@ export const Container = styled.button`
   margin-top: 16px;
   transition: background-color 0.2s;
   &:hover {
-    background: ${shade(0.2, '#ff9000')};
+    background: ${(props) => {
+      return shade(0.2, props.isDisabled ? '#d3d3d3' : '#ff9000');
+    }};
   }
 `;

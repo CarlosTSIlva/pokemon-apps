@@ -86,6 +86,13 @@ function Home() {
     getPokemon();
   }, [page, getPokemon]);
 
+  function topFunction() {
+    window.scrollTo({
+      top: 380,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <div className='App'>
       <div
@@ -113,7 +120,7 @@ function Home() {
       </div>
 
       <Header>
-        <img src={LogoPng} alt='logo' height={170} />
+        <img src={LogoPng} alt='logo' height={'170vh'} />
         <nav>
           <h1>
             Pokemons <br /> capturados
@@ -166,16 +173,23 @@ function Home() {
 
       <NavigationButton>
         <Button
-          disabled={pokemon?.previous == null}
+          isDisabled={pokemon?.previous == null}
           onClick={() => {
-            setPage(page - 1);
+            if (page != 0) {
+              setPage(page - 1);
+              topFunction();
+            }
           }}
         >
           Anterior
         </Button>
         <Button
-          disabled={pokemon?.next == null}
-          onClick={() => setPage(page + 1)}
+          isDisabled={pokemon?.next == null}
+          onClick={() => {
+            setPage(page + 1);
+
+            topFunction();
+          }}
         >
           Proximo
         </Button>

@@ -40,12 +40,19 @@ export const Header = styled.header`
   display: flex;
   background-color: #2a75bb;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
   padding: 20px;
+  align-items: center;
+  max-height: 400px;
+
   border: 18px red solid;
   nav {
     font-weight: bold;
-    font-size: 26px;
+    font-size: 3vw;
+  }
+  h1 {
+    padding: 0px;
+    margin: 0px;
   }
 `;
