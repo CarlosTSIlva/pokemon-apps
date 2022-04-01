@@ -88,7 +88,7 @@ function Home() {
 
   function topFunction() {
     window.scrollTo({
-      top: 380,
+      top: 0,
       behavior: 'smooth',
     });
   }
