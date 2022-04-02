@@ -148,7 +148,7 @@ function Home() {
         </Container>
       )}
 
-      {loading ?? (
+      {loading ? null : (
         <NavigationButton>
           <Button
             isDisabled={pokemon?.previous == null}
