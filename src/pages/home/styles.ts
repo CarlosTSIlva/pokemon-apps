@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ContainerHome = styled.div`
   background-color: #2a75bb;
   height: 100%;
+  width: 100%;
   text-align: center;
 `;
 
