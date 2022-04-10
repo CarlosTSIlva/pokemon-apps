@@ -37,7 +37,7 @@ const Pokedex = () => {
           <div>
             {arrayPokedex.map(({ key, value }: any) => {
               return (
-                <ListPokemon key={key.name}>
+                <ListPokemon type={key.types[0].type.name} key={key.name}>
                   <img src={key.img} alt={key.name} height='150px' />
                   <div>
                     <h1>{key?.name}</h1>

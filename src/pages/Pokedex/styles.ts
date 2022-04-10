@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { pokemonColors } from '../../global/pokemonColors';
+import { TypesColors } from '../../types/ResponseGetPokemons';
 
 export const Container = styled.div`
   background: #3c5aa6;
@@ -6,26 +8,29 @@ export const Container = styled.div`
   padding-bottom: 30px;
 `;
 
-export const ListPokemon = styled.div`
+export const ListPokemon = styled.div<TypesColors>`
   padding: 10px;
+  background-color: ${(props) => {
+    return `${pokemonColors[props.type]}`;
+  }};
   margin: 15px 0px;
   display: flex;
-  background-color: #2a75bb;
   text-align: center;
   align-items: center;
   justify-content: space-between;
   img {
     padding-right: 4px;
+    background-color: #fff;
+    border-radius: 50%;
   }
   h1 {
-    color: red;
-    font-size: 1.6em;
-    text-shadow: -1px -1px 0px black, -1px 1px 0px black, 1px -1px 0px black;
+    color: black;
   }
   > div {
     display: flex;
-    justify-content: center;
-    width: 70%;
+    justify-content: space-between;
+    width: 20%;
+    padding-right: 150px;
     flex-wrap: wrap;
   }
 `;

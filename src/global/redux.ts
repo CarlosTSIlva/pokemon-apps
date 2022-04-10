@@ -1,11 +1,11 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { PokemonResults } from '../types/ResponseGetPokemons';
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const counterPokemonSlice = createSlice({
+  name: 'counterPokemon',
   initialState: {
     value: 0,
-    pokedex: [] as any,
+    pokedex: [] as PokemonResults[],
   },
   reducers: {
     addPokedex: (state, action) => {
@@ -14,9 +14,9 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { addPokedex } = counterSlice.actions;
+export const { addPokedex } = counterPokemonSlice.actions;
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: counterPokemonSlice.reducer,
 });
 
 export const pokedex = (state: { pokedex: [] }) => {
