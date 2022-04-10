@@ -15,12 +15,12 @@ const Pokedex = () => {
 
   const map = () => {
     const array = [] as any;
-    const teste = pokedexSelect.reduce(
+    const count = pokedexSelect.reduce(
       (acc, e) => acc.set(e, (acc.get(e) || 0) + 1),
       new Map()
     );
 
-    teste.forEach(async (value: string, key: any) => {
+    count.forEach(async (value: string, key: any) => {
       await array.push({ value: value, key });
     });
     setArrayPokedex(array);

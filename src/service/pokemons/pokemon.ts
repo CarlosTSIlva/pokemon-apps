@@ -23,13 +23,13 @@ const getImage = async (url: string) => {
 
 const requestFormatted = async (page: number) => {
   const response = await getPokemons(page);
-  const teste = response.results.map(async (pokemon) => {
+  const result = response.results.map(async (pokemon) => {
     const response = await getImage(pokemon.url);
     pokemon.img = response.img;
     pokemon.abilities = response.abilities;
     pokemon.types = response.types;
   });
-  await Promise.all(teste);
+  await Promise.all(result);
   return response;
 };
 
