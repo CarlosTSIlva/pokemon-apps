@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { pokemonColors } from '../../global/pokemonColors';
-import { PokemonTypes, TypesColors } from '../../types/ResponseGetPokemons';
 
 export const ContainerHome = styled.div`
   background-color: #2a75bb;

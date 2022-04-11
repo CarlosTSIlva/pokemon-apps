@@ -4,18 +4,22 @@ import { addPokedex } from '../../../global/redux';
 import { PokemonResults } from '../../../types/ResponseGetPokemons';
 import { ButtonPokemon, Container } from './styles';
 
-interface CardPokemon {
+interface ICardPokemon {
   pokemon: PokemonResults;
   dispatch: Dispatch;
   getEffect: (pokemon: PokemonResults) => void;
 }
 
-const CardPokemon = ({ dispatch, getEffect, pokemon }: CardPokemon) => {
+const CardPokemon = ({ dispatch, getEffect, pokemon }: ICardPokemon) => {
   return (
     <Container type={pokemon.types[0].type.name} key={pokemon.url}>
       <h1>{pokemon.name}</h1>
 
-      <img src={pokemon.img} alt='teste' height='150px' />
+      <img
+        src={pokemon.img}
+        alt={`sou imagem do pokemon ${pokemon.img}`}
+        height='150px'
+      />
       <ButtonPokemon>
         <Button
           onClick={() => {

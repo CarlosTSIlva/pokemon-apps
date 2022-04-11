@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Header } from '../../components/Header';
 import { pokedex } from '../../global/redux';
@@ -9,23 +9,23 @@ const Pokedex = () => {
   const [loading, setLoading] = useState(true);
   const [arrayPokedex, setArrayPokedex] = useState([] as any);
 
-  useEffect(() => {
-    map();
-  }, []);
-
-  const map = () => {
+  const map = useCallback(async () => {
     const array = [] as any;
     const count = pokedexSelect.reduce(
       (acc, e) => acc.set(e, (acc.get(e) || 0) + 1),
       new Map()
     );
-
     count.forEach(async (value: string, key: any) => {
-      await array.push({ value: value, key });
+      return await array.push({ value: value, key });
     });
     setArrayPokedex(array);
     setLoading(false);
-  };
+    return;
+  }, [pokedexSelect]);
+
+  useLayoutEffect(() => {
+    map();
+  }, [map]);
 
   return (
     <Container>

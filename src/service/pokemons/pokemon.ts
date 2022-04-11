@@ -3,7 +3,6 @@ import {
   PokemonAbilities,
   PokemonResults,
   PokemonTypes,
-  ResponseGetPokemon,
 } from '../../types/ResponseGetPokemons';
 import api from '../http';
 import { getPokemons } from './getPokemons';
